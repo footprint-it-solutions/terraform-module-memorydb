@@ -32,7 +32,8 @@ resource "aws_memorydb_subnet_group" "this" {
 }
 
 resource "aws_memorydb_acl" "this" {
-  name = var.acl_name
+  count = var.acl_name == "open-access" ? 0 : 1
+  name  = var.acl_name
 
   tags = merge(local.tags, {
     Name = var.acl_name
@@ -40,7 +41,7 @@ resource "aws_memorydb_acl" "this" {
 }
 
 resource "aws_memorydb_cluster" "this" {
-  acl_name                 = aws_memorydb_acl.this.name
+  acl_name                 = var.acl_name == "open-access" ? var.acl_name : aws_memorydb_acl.this[0].name
   auto_minor_version_upgrade = var.auto_minor_version_upgrade
   engine_version           = var.engine_version
   name                     = var.name

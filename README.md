@@ -42,7 +42,7 @@ module "memorydb" {
 | `num_replicas_per_shard`    | The number of replicas per shard in the MemoryDB cluster.        | `number`      | `1`             |    no    |
 | `port`                      | The port number on which each of the cache nodes will accept connections. | `number` | `6379` | no |
 | `snapshot_retention_limit`  | The number of days for which MemoryDB retains automatic snapshots before deleting them. | `number` | `7` | no |
-| `acl_name`                  | The name of the MemoryDB ACL.                                    | `string`      | `"open-access"` |    no    |
+| `acl_name`                  | The name of the MemoryDB ACL. If you wish to use an existing ACL, such as the default `open-access` ACL, provide its name. If you wish to create a new ACL, provide a new unique name. | `string`      | `"open-access"` |    no    |
 | `tls_enabled`               | Whether to enable TLS for the MemoryDB cluster.                  | `bool`        | `true`          |    no    |
 
 ## Outputs
