@@ -10,6 +10,14 @@ resource "aws_security_group" "memorydb" {
     to_port         = var.port
   }
 
+  # self-referencing ingress rule
+  ingress {
+    from_port = var.port
+    protocol  = "tcp"
+    self      = true
+    to_port   = var.port
+  }
+
   egress {
     cidr_blocks = ["0.0.0.0/0"]
     from_port   = 0
