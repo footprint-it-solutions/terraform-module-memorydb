@@ -3,12 +3,12 @@ output "arn" {
   value       = aws_memorydb_cluster.this.arn
 }
 
-output "name" {
-  description = "The name of the MemoryDB cluster"
-  value       = aws_memorydb_cluster.this.name
+output "id" {
+  description = "The ID of the MemoryDB cluster"
+  value       = aws_memorydb_cluster.this.id
 }
 
-output "primary_endpoint_address" {
-  description = "The primary endpoint address of the MemoryDB cluster"
-  value       = aws_memorydb_cluster.this.primary_endpoint_address
+output "cluster_endpoint_address" {
+  description = "The DNS hostname of the cluster configuration endpoint"
+  value       = aws_memorydb_cluster.this.cluster_endpoint.address
 }
